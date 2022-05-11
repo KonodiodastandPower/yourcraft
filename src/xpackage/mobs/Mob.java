@@ -2,10 +2,7 @@ package xpackage.mobs;
 
 public class Mob {
     /**
-     * 所有怪物(小怪)的基类
+     * 小怪的基类
+     * 施工中...
      */
-    private Double damage;//攻击伤害
-    private Double HP;//生命值
-    private Double DEF;//防御力
-    
 }

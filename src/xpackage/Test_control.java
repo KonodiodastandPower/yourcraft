@@ -1,6 +1,7 @@
 package xpackage;
 
 import xpackage.weapons.ExampleWeapon;
+import xpackage.weapons.Weapon;
 
 //测试控制类
 public class Test_control {
