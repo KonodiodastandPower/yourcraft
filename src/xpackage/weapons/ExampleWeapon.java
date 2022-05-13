@@ -5,7 +5,7 @@ public class ExampleWeapon extends Weapon{
      * 这是一个例子
      */
     private String name = "剑";//武器的名称
-    private Double damage = 50.0;//武器的攻击伤害
+    private Double damage = 10.0;//武器的攻击伤害
     private Integer endurance = 50;//武器的耐久度
     private Integer critical_sr = 0;//暴击率（百分制） 如：暴击率为30%则输入30 暴击指理论伤害提高两倍
     private Boolean armor_breaking = true;//是否能无视防御
