@@ -5,7 +5,7 @@ import java.util.Random;
 public class Mob {
     /**
      * 小怪的基类
-     * 施工中...
+     *已取得阶段性成功
      * 
      */
     private String name;//名称
