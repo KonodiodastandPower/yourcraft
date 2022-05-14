@@ -5,10 +5,10 @@ public class ExampleWeapon extends Weapon{
      * 这是一个例子
      */
     private String name = "剑";//武器的名称
-    private Double damage = 10.0;//武器的攻击伤害
+    private Double damage = 50.0;//武器的攻击伤害
     private Integer endurance = 50;//武器的耐久度
     private Integer critical_sr = 0;//暴击率（百分制） 如：暴击率为30%则输入30 暴击指理论伤害提高两倍
-    private Boolean armor_breaking = true;//是否能无视防御
+    private Boolean armor_breaking = false;//是否能无视防御
     private Boolean shield_breaking = false;//是否能破盾
     private Integer cold_down = 0;//冷却时间（几回合）（如：如果是0那么每回合都能使用，是1的话那么使用后得隔一回合再使用）
     private Integer left_turn;//剩余多少回合才能继续使用
