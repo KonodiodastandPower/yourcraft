@@ -7,6 +7,7 @@ public class Weapon {
  * 这是武器的基础类
  * 所有的武器都应当继承该类
  * 将该类实例化也可以作为一个基础的武器
+ * 已取得阶段性成功
  */
     private String name;//武器的名称
     private Double damage;//武器的攻击伤害
