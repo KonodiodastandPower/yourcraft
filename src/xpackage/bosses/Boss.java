@@ -7,6 +7,7 @@ public class Boss {
      * 所有boss的基类
      * 以取得阶段性成功
      */
+	private String name;//名称
 	private Double HP;//生命值
 	private Double DEF;//防御力
 	private Double damage;//攻击力
@@ -44,6 +45,9 @@ public class Boss {
 	/**
 	 *获取和设置属性方法 
 	 */
+	public String GETname() {
+		return this.name;
+	}
 	public Double GETHP() {
 		return this.HP;
 	}
@@ -61,6 +65,9 @@ public class Boss {
 	}
 	public Boolean GETshield_breaking() {
 		return this.shield_breaking;
+	}
+	public void SETname(String name) {
+		this.name = name;
 	}
 	public void SETHP(Double HP) {
 		this.HP = HP;
