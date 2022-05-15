@@ -18,6 +18,7 @@ import xpackage.weapons.Weapon;
 
 public class Test_2020515 {
 	/**
+	 *这是测试
 	 *英雄类暂时没写完，所以就先不测试英雄挨打了 
 	 */
 	public static void main(String[] args) {
