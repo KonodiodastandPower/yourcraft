@@ -17,7 +17,7 @@ public class Weapon {
     private Boolean shield_breaking;//是否能破盾
     private Integer cold_down;//冷却时间（几回合）（如：如果是0那么每回合都能使用，是1的话那么使用后得隔一回合再使用）
     private Integer left_turn;//剩余多少回合才能继续使用
-    private Boolean isBreak;//如果为true则该武器已经破坏 破坏了的武器无法造成伤害
+//    private Boolean isBreak;//如果为true则该武器已经破坏 破坏了的武器无法造成伤害
     private Boolean canBreak;//武器能否损坏 false则为无法损坏
     public Random random = new Random();
     public Weapon(){//构造方法（初始化）
@@ -27,8 +27,7 @@ public class Weapon {
         if(GETarmor_breaking()){//如果破甲则执行
             DEF = 0.0;
         }
-        Double final_damage = GETdamage() + (random.nextInt(21)-10)/**这一部分为伤害浮动 ±10 */;//最终的理论伤害
-        // System.out.println(final_damage);
+        Double final_damage = (GETendurance() == 0)?0.0:(GETdamage() + (random.nextInt(21)-10))/**这一部分为伤害浮动 ±10 */;//最终的理论伤害
         Double hp = HP;
         if(final_damage < 0){//防止伤害小于0
             final_damage = 0.0;
@@ -36,8 +35,7 @@ public class Weapon {
         if(Choose(GETcritical_sr())){//判断是否暴击
             final_damage = final_damage * 2;
         }
-        // System.out.println(final_damage-DEF);//调试
-        Double damage_hp = GETisBreak()?0:Math.max(final_damage-DEF,0);//计算最终剩余生命值
+        Double damage_hp = Math.max(final_damage-DEF,0);//计算最终剩余生命值
         hp = hp - damage_hp;
         if(hp < 0){//防止生命值小于0
             hp = 0.0;
@@ -102,9 +100,9 @@ public class Weapon {
     public Integer GETleft_turn(){
         return this.left_turn;
     }
-    public Boolean GETisBreak(){
-        return this.isBreak;
-    }
+//    public Boolean GETisBreak(){
+//        return this.isBreak;
+//    }
     public Boolean GETcanBreak(){
         return this.canBreak;
     }
@@ -135,9 +133,9 @@ public class Weapon {
     public void SETleft_turn(Integer integer){
         this.left_turn = integer;
     }
-    public void SETisBreak(Boolean boo){
-        this.isBreak = boo;
-    }
+//    public void SETisBreak(Boolean boo){
+//        this.isBreak = boo;
+//    }
     public void SETcanBreak(Boolean boo){
         this.canBreak = boo;
     }
