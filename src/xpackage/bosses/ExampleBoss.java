@@ -1,6 +1,7 @@
 package xpackage.bosses;
 
 public class ExampleBoss extends Boss{
+	private String name = "迪亚波罗";//名称
 	private Double HP = 500.0;//生命值
 	private Double DEF = 50.0;//防御力
 	private Double damage = 10.0;//攻击力
@@ -10,6 +11,9 @@ public class ExampleBoss extends Boss{
 	/**
 	 *获取和设置属性方法 
 	 */
+	public String GETname() {
+		return this.name;
+	}
 	public Double GETHP() {
 		return this.HP;
 	}
@@ -27,6 +31,9 @@ public class ExampleBoss extends Boss{
 	}
 	public Boolean GETshield_breaking() {
 		return this.shield_breaking;
+	}
+	public void SETname(String name) {
+		this.name = name;
 	}
 	public void SETHP(Double HP) {
 		this.HP = HP;
