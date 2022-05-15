@@ -5,7 +5,7 @@ import java.util.Random;
 public class Boss {
     /**
      * 所有boss的基类
-     * 以取得阶段性成功
+     * 已取得阶段性成功
      */
 	private String name;//名称
 	private Double HP;//生命值
