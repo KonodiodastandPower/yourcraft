@@ -20,7 +20,7 @@ import xpackage.weapons.Weapon;
 
 public class Test_2020515 {
 	/**
-	 *这是测试
+	 *这是测试类
 	 */
 	public static void main(String[] args) {
 		XFrame xf = new XFrame();
