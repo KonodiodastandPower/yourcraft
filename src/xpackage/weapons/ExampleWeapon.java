@@ -1,22 +1,56 @@
 package xpackage.weapons;
 
+import javax.swing.JTextArea;
+
 public class ExampleWeapon extends Weapon{
     /**
      * 这是一个例子
      */
     private String name = "剑";//武器的名称
     private Double damage = 50.0;//武器的攻击伤害
-    private Integer endurance = 50;//武器的耐久度
-    private Integer critical_sr = 0;//暴击率（百分制） 如：暴击率为30%则输入30 暴击指理论伤害提高两倍
+    private Integer endurance = 30;//武器的耐久度
+    private Integer critical_sr = 20;//暴击率（百分制） 如：暴击率为30%则输入30 暴击指理论伤害提高两倍
     private Boolean armor_breaking = false;//是否能无视防御
     private Boolean shield_breaking = false;//是否能破盾
     private Integer cold_down = 0;//冷却时间（几回合）（如：如果是0那么每回合都能使用，是1的话那么使用后得隔一回合再使用）
     private Integer left_turn;//剩余多少回合才能继续使用
-    private Boolean isBreak = false;//如果为true则该武器已经破坏 破坏了的武器无法造成伤害
+    private Boolean isBreak = false;//**暂时没什么大用**如果为true则该武器已经破坏 破坏了的武器无法造成伤害
     private Boolean canBreak = true;//武器能否损坏 false则为无法损坏
     /**
      * 以下是获取该类属性的方法
      */
+    public Double Attack(Double HP/**被攻击者的剩余生命 */,Double DEF/**被攻击者的防御力 */,JTextArea j){//测试方法
+    	j.append("\n-------------------------");
+    	j.append("\n武器攻击了");
+        if(GETarmor_breaking()){//如果破甲则执行
+            DEF = 0.0;
+            j.append("\n破甲了");
+        }
+        Double final_damage = (GETendurance() == 0)?0.0:(GETdamage() + (random.nextInt(21)-10))/**这一部分为伤害浮动 ±10 */;//最终的理论伤害
+        Double hp = HP;
+        j.append("\n敌人的生命值:"+hp);
+        if(final_damage < 0){//防止伤害小于0
+            final_damage = 0.0;
+        }
+        j.append("\n伤害浮动后的伤害:"+final_damage);
+        if(Choose(GETcritical_sr())){//判断是否暴击
+            final_damage = final_damage * 2;
+            j.append("\n暴击了，现在的伤害为:"+final_damage);
+        }
+        Double damage_hp = GETisBreak()?0:Math.max(final_damage-DEF,0);//计算最终剩余生命值
+        j.append("\n造成的伤害为:"+damage_hp);
+        hp = hp - damage_hp;
+        if(hp < 0){//防止生命值小于0
+            hp = 0.0;
+        }
+        j.append("\n剩余的生命值为:"+hp);
+        if(GETendurance() > 0) {
+        	SETendurance(GETendurance()-1);//将武器的耐久度减少1
+        	j.append("\n武器的剩余耐久为:"+GETendurance());
+        }
+        j.append("\n-------------------------");
+        return hp;
+    }
     public String GETname(){
         return name;
     }
