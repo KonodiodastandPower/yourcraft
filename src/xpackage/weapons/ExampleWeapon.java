@@ -21,7 +21,6 @@ public class ExampleWeapon extends Weapon{
      */
     public Double Attack(Double HP/**被攻击者的剩余生命 */,Double DEF/**被攻击者的防御力 */,JTextArea j){//测试方法
     	j.append("\n-------------------------");
-    	j.append("\n武器攻击了");
         if(GETarmor_breaking()){//如果破甲则执行
             DEF = 0.0;
             j.append("\n破甲了");
@@ -43,11 +42,11 @@ public class ExampleWeapon extends Weapon{
         if(hp < 0){//防止生命值小于0
             hp = 0.0;
         }
-        j.append("\n剩余的生命值为:"+hp);
         if(GETendurance() > 0) {
         	SETendurance(GETendurance()-1);//将武器的耐久度减少1
         	j.append("\n武器的剩余耐久为:"+GETendurance());
         }
+        j.append("\n敌人剩余的生命值为:"+hp);
         j.append("\n-------------------------");
         return hp;
     }
