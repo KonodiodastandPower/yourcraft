@@ -42,7 +42,9 @@ public class Weapon {
         if(hp < 0){//防止生命值小于0
             hp = 0.0;
         }
-        SETendurance(GETendurance()-1);//将武器的耐久度减少1
+        if(GETendurance() > 0) {
+        	SETendurance(GETendurance()-1);//将武器的耐久度减少1
+        }
         return hp;
     }
     public void Before_Attack(){
