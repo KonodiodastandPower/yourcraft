@@ -2,6 +2,8 @@ package xpackage.bosses;
 
 import java.util.Random;
 
+import xpackage.heros.Hero;
+
 public class Boss {
     /**
      * 所有boss的基类
@@ -31,6 +33,37 @@ public class Boss {
         hp = hp - damage_hp;
         if(hp < 0){//防止生命值小于0
             hp = 0.0;
+        }
+        return hp;
+	}
+	public Double Attack(Hero hero/*被攻击的英雄*/) {//Attack优化方法
+		Double hp = hero.GETHP();//生命值
+		Double def;//防御力
+		Boolean hasArmor;//是否有护甲
+		if(!hero.GETarmor().equals(null) && hero.GETarmor().GETendurance() > 0) {
+			def = hero.GETDEF() + hero.GETarmor().GETDEF();
+			hasArmor = true;
+		}else {
+			def = hero.GETDEF();
+			hasArmor = false;
+		}
+		if(GETarmor_breaking()){//如果破甲则执行
+            def = 0.0;
+        }
+		Double final_damage = GETdamage() + (random.nextInt(21)-10)/**这一部分为伤害浮动 ±10 */;//最终的理论伤害
+        if(final_damage < 0){//防止伤害小于0
+            final_damage = 0.0;
+        }
+        if(Choose(GETcritical_sr())){//判断是否暴击
+            final_damage = final_damage * 2;
+        }
+        Double damage_hp = Math.max(final_damage-def,0);//计算最终剩余生命值
+        hp = hp - damage_hp;
+        if(hp < 0){//防止生命值小于0
+            hp = 0.0;
+        }
+        if(hasArmor && hero.GETarmor().GETendurance() > 0) {//如果有盔甲则减少盔甲耐久度
+        	hero.GETarmor().SETendurance(hero.GETarmor().GETendurance() - 1);
         }
         return hp;
 	}
