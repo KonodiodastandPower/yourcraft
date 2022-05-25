@@ -3,6 +3,10 @@ package xpackage.test;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
@@ -22,13 +26,25 @@ import xpackage.weapons.Weapon;
 public class Test_2020515 {
 	/**
 	 *这是测试类
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		XFrame xf = new XFrame();
 		xf.setTitle("Test");
 		xf.setLayout(new BorderLayout());
 		
-		ExampleWeapon weapon = new ExampleWeapon();
+		Object OBJ;
+		
+
+			FileInputStream fip = new FileInputStream("C:\\tmd.txt");
+			ObjectInputStream ois = new ObjectInputStream(fip);
+			OBJ = ois.readObject();
+			ois.close();
+			fip.close();
+
+		
+		ExampleWeapon weapon = (ExampleWeapon)OBJ;
 		ExampleMob mob = new ExampleMob();
 		ExampleBoss boss = new ExampleBoss();
 		Hero hero = new ExampleHero();
