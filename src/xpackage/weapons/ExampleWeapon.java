@@ -1,8 +1,10 @@
 package xpackage.weapons;
 
+import java.io.Serializable;
+
 import javax.swing.JTextArea;
 
-public class ExampleWeapon extends Weapon{
+public class ExampleWeapon extends Weapon implements Serializable {
     /**
      * 这是一个例子
      */
